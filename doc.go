@@ -175,4 +175,4 @@ The following full-blown client examples are in the examples directory:
    for notifications about changes to account balances, and gets a list of
    unspent transaction outputs (utxos) the wallet can sign
 */
-package btcrpcclient
+package zcashrpcclient
