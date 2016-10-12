@@ -25,4 +25,6 @@ _cgo_export.*
 
 _testmain.go
 
+/profile.cov
+
 *.exe
