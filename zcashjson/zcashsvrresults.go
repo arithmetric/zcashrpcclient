@@ -7,19 +7,19 @@ package zcashjson
 
 // ZOperationStatusError models the error data in ZGetOperationStatusResult.
 type ZOperationStatusError struct {
-	Code    int `json:"code"`
+	Code    int    `json:"code"`
 	Message string `json:"message"`
 }
 
 // ZGetOperationStatusResult models the data from the z_getoperationresult and
 // z_getoperationstatus commands.
 type ZGetOperationStatusResult struct {
-	Id             string                 `json:"id"`
-	Status         string                 `json:"status"`
-	CreationTime   int                    `json:"creation_time"`
-	Result         map[string]string      `json:"result"`
-	Error          ZOperationStatusError  `json:"error"`
-	ExecutionSecs  float64                `json:"execution_secs"`
+	Id            string                `json:"id"`
+	Status        string                `json:"status"`
+	CreationTime  int                   `json:"creation_time"`
+	Result        map[string]string     `json:"result"`
+	Error         ZOperationStatusError `json:"error"`
+	ExecutionSecs float64               `json:"execution_secs"`
 }
 
 // ZGetTotalBalanceResult models the data from the z_gettotalbalance command.

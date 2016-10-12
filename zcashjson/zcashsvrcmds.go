@@ -8,8 +8,8 @@
 
 package zcashjson
 
-import(
-  "github.com/btcsuite/btcd/btcjson"
+import (
+	"github.com/btcsuite/btcd/btcjson"
 )
 
 // ZGetBalanceCmd defines the z_getbalance JSON-RPC command.

@@ -7,6 +7,7 @@ package zcashrpcclient
 
 import (
 	"encoding/json"
+
 	"github.com/arithmetric/zcashrpcclient/zcashjson"
 	"github.com/btcsuite/btcutil"
 )
@@ -121,10 +122,7 @@ func (c *Client) ZListOperationIdsAsync() FutureZListOperationIdsResult {
 	return c.sendCmd(cmd)
 }
 
-// ListTransactions returns a list of the most recent transactions.
-//
-// See the ListTransactionsCount and ListTransactionsCountFrom to control the
-// number of transactions returned and starting point, respectively.
+// ZListOperationIds returns a list of the most recent transactions.
 func (c *Client) ZListOperationIds() ([]string, error) {
 	return c.ZListOperationIdsAsync().Receive()
 }
@@ -146,13 +144,13 @@ func (r FutureZSendManyResult) Receive() (string, error) {
 	}
 
 	// Unmarshal result as an array of result strings.
-	var operationId string
-	err = json.Unmarshal(res, &operationId)
+	var operationID string
+	err = json.Unmarshal(res, &operationID)
 	if err != nil {
 		return "", err
 	}
 
-	return operationId, nil
+	return operationID, nil
 }
 
 // ZSendManyAsync returns an instance of a type that can be used to get the
@@ -165,7 +163,7 @@ func (c *Client) ZSendManyAsync(fromAccount string, amounts []zcashjson.ZSendMan
 	return c.sendCmd(cmd)
 }
 
-// SendMany sends multiple amounts to multiple addresses using the provided
+// ZSendMany sends multiple amounts to multiple addresses using the provided
 // account as a source of funds in a single transaction.  Only funds with the
 // default number of minimum confirmations will be used.
 func (c *Client) ZSendMany(fromAccount string, amounts []zcashjson.ZSendManyEntry) (string, error) {
@@ -249,7 +247,7 @@ func (c *Client) ZListAddressesAsync() FutureZListAddressesResult {
 	return c.sendCmd(cmd)
 }
 
-// ListAddresses returns a map of account names and their associated balances
+// ZListAddresses returns a map of account names and their associated balances
 // using the default number of minimum confirmations.
 func (c *Client) ZListAddresses() ([]string, error) {
 	return c.ZListAddressesAsync().Receive()
@@ -473,7 +471,7 @@ func (c *Client) ZImportKeyAsync(key string, rescan *bool) FutureZImportKeyResul
 	return c.sendCmd(cmd)
 }
 
-// ImportKey imports the passed private key.
+// ZImportKey imports the passed private key.
 func (c *Client) ZImportKey(key string, rescan *bool) error {
 	return c.ZImportKeyAsync(key, rescan).Receive()
 }
